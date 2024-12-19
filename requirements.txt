@@ -1,0 +1,5 @@
+pytest
+allure-pytest
+appium-python-client
+aiogram
+aiohttp

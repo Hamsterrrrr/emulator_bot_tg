@@ -111,8 +111,17 @@ def test_ready(driver):
     with allure.step("вернуться на главную"):
         back_buttton = (AppiumBy.ACCESSIBILITY_ID, "Go back")
         wait.until(EC.element_to_be_clickable(back_buttton)).click()
-        wait.until(EC.element_to_be_clickable(back_buttton)).click()
+        driver.press_keycode(4)
         allure.attach(driver.get_screenshot_as_png(), name="click_result", attachment_type=allure.attachment_type.PNG)
-    with allure.step("Нажать кнопку Home"):
-        driver.press_keycode(3)  # Нажимаем кнопку Home (код 3)
-        allure.attach(driver.get_screenshot_as_png(), name="home_pressed", attachment_type=allure.attachment_type.PNG)
+    # with allure.step("Нажать кнопку Home"):
+    #     driver.press_keycode(3)  # Нажимаем кнопку Home (код 3)
+    #     allure.attach(driver.get_screenshot_as_png(), name="home_pressed", attachment_type=allure.attachment_type.PNG)
+    #//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout[1]/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[3]
+    #//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout[1]/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]
+    
+    with allure.step("переход на след аккаунт"):
+        menu = (AppiumBy.ACCESSIBILITY_ID, "Open navigation menu")
+        second_account = (AppiumBy.XPATH, "//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]")
+        wait.until(EC.element_to_be_clickable(menu)).click()
+        wait.until(EC.element_to_be_clickable(second_account)).click()
+        allure.attach(driver.get_screenshot_as_png(), name="click_result", attachment_type=allure.attachment_type.PNG)

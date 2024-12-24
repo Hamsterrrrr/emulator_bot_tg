@@ -10,9 +10,8 @@ def get_driver():
         options = UiAutomator2Options()
         options.platform_name = "Android"
         options.device_name = "emulator-5554"
-        options.app_package = "org.telegram.messenger"
-        options.app_activity = "org.telegram.ui.LaunchActivity"
         options.automation_name = "UiAutomator2"
+        options.auto_grant_permissions = True
         options.no_reset = True
 
         print("Инициализация драйвера с параметрами:", options.to_capabilities())

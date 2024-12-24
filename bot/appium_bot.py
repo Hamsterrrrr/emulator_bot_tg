@@ -30,7 +30,7 @@ async def extract_links_from_message(message: types.Message):
 
 async def save_new_links_to_file(links: set):
     """Перезаписывает файл links.txt новыми ссылками из текущего сообщения."""
-    with open("links.txt", "w") as file:
+    with open("links.txt", "a") as file:
         for link in sorted(links):  # Сортируем для упорядоченности
             file.write(link + "\n")
     print(f"Файл перезаписан. Сохранены ссылки: {', '.join(sorted(links))}")
